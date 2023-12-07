@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用户注册与登录</title>
+</head>
+<body>
+<form method="post" id="myform">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>用户名：</td>
+            <td><input type="text" name="username" id="username"></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="password" name="password" id="password"></td>
+        </tr>
+        <tr>
+            <td>性别：</td>
+            <td><select name="user_xs" id="user_xs">
+                <option value="0">男</option>
+                <option value="1">女</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>年龄：</td>
+            <td><input type="text" id="user_age" name="user_age"></td>
+        </tr>
+        <tr>
+            <td><input type="button" name="login" value="登录" onclick="Register('login/')"></td>
+            <td><input type="button" name="register" value="注册" onclick="Register('register/')"></td>
+			<td><input type="button" name="logout" value="退出" onclick="Register('logout/')"></td>
+        </tr>
+    </table>
+</form>
+</body>
+<script src="../../static/js/jquery-3.6.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+		function Register(url) {
+			// $.ajaxSetup({
+
+			// })
+			// var csrftoken = $('[name="csrfmiddlewaretoken"]').val();
+			var data = {
+				"username": document.getElementById('username').value,
+				"password": document.getElementById('password').value,
+				"user_xb": document.getElementById('user_xs').value,
+				"user_age": document.getElementById('user_age').value
+			};
+			var data_json = JSON.stringify(data);
+			$.ajax({
+				type: 'POST',
+				url: url,
+				contentType: 'application/json',
+				headers: {
+					'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+				},
+				data: data_json,
+				dataType: 'json',
+				success: function(response) {
+					document.write(JSON.stringify(response))
+				}
+			});
+		};
+
+
+</script>
+</html>
