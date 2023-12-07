@@ -1,0 +1,18 @@
+
+@font-face{
+	font-family: 'Zhuo';
+	src: url('./ZhuoJianGanLanJianTi-Regular.ttf');
+	font-display: swap;
+}
+
+@font-face{
+	font-family: 'Biao';
+	src: url('./庞门正道标题体3.0.ttf');
+	  font-display: swap;
+}
+
+@font-face{
+	font-family: 'OPPO';
+	src: url('./OPPO-Sans-Regular-1.00-305afd79ce6649119c5626a4aeedd131-20200319194936.ttf');
+	font-display: swap;
+}
